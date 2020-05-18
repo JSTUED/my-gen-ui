@@ -32,5 +32,18 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xu20065953/my-gen-ui.git"
+  },
+  "keywords": [
+    "element form",
+    "vue form",
+    "vue ui"
+  ],
+  "author": {
+    "name": "junjie.xu",
+    "email": "20065953@163.com"
   }
 }
