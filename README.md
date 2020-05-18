@@ -1,24 +1,15 @@
 # my-gen-ui
 
-## Project setup
+### Install
 ```
-npm install
+# Using npm
+npm i my-gen-ui
+
+# Using yarn
+yarn add my-gen-ui
 ```
 
-### Compiles and hot-reloads for development
+### Quickstart
 ```
-npm run serve
+import 'my-gen-ui'
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
