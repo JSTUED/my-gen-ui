@@ -1,7 +1,7 @@
 <template>
     <div>
         <!--远程数据-->
-        <el-select v-if="value.remote" v-model="value.data" placeholder="请选择" clearable filterable :multiple="value.multiple"
+        <el-select v-if="value.remote" v-model="value.data" placeholder="请选择" remote clearable filterable :multiple="value.multiple"
                    :collapse-tags="value.collapseTags" class="gen-search-w" :remoteMethod="remoteMethod">
             <el-option
                     v-for="(item, index) in options"

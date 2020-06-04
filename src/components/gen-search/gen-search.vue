@@ -92,18 +92,67 @@
             //     this.list = _.cloneDeep(value);
             // },
             // 获取搜索条件
-            getVal(){
-                let list = this.value.map((item)=>{
-                    return item;
-                });
-                return list;
-            },
+            // getVal(){
+            //     let list = this.value.map((item)=>{
+            //         return item;
+            //     });
+            //     return list;
+            // },
 
             search(){
-                this.$emit("search", this.getVal())
+                this.$emit("search", this.formatData())
             },
+
             reset(){
                 this.$emit("input", this.orangeData);
+            },
+
+            // 格式化数据
+            formatData(){
+                let rules = [];
+                this.value.forEach((item)=>{
+                   if(item.data){
+                       if (item.type=='daterange' && Array.isArray(item.data) && item.data.length >=2){
+                           // 时间区间
+                           rules.push({
+                               field: item.field,
+                               op: 'le',
+                               data: item.data[0]
+                           });
+                           rules.push({
+                               field: item.field,
+                               op: 'ge',
+                               data: item.data[1]
+                           });
+                       }else if (item.type=='select' && item.multiple && Array.isArray(item.data)){
+                           // select 多选
+                           if (item.data.length>0){
+                               rules.push({
+                                   field: item.field,
+                                   op: "in",
+                                   data: item.data.join(",")
+                               })
+                           }
+
+                       }else if(item.type=='cascader' && Array.isArray(item.data)){
+                           // cascader 数据处理
+                           rules.push({
+                               field: item.field,
+                               op: "in",
+                               data: item.data.join(",")
+                           })
+                       }else {
+                           rules.push({
+                               field: item.field,
+                               op: item.op || 'eq',
+                               data: item.data
+                           })
+                       }
+
+                   }
+                });
+
+                return rules;
             }
         }
     }

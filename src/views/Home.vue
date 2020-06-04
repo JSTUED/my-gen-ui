@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <gen-form ref="genForm" v-model="filters.rules" :hi="hi" label-width="100px"></gen-form>
+    <gen-form ref="genForm" v-model="filters.rules" :hi="hi" label-width="100px" @search="search"></gen-form>
   </div>
 </template>
 
@@ -56,10 +56,10 @@
             },
             {field: "isActive", data: 20, type: "switch", label: "状态：", activeValue: 10, inactiveValue: 20, activeText: "激活", inactiveText: "禁用"},
             {
-              field: "userName",
+              field: "reduction",
               data: "",
               type: "select",
-              label: "员工：",
+              label: "减速机：",
               remote: true,
               options: [
                 { name: "张三", id: 1},
@@ -130,7 +130,9 @@
       }, 5000)
     },
     methods: {
-
+      search(data){
+        console.log(data);
+      }
     }
   }
 </script>
