@@ -23,6 +23,8 @@
                 }
             }
         },
+        created() {
+        },
         data(){
             return {
                 op: this.value.op,
